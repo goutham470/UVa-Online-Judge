@@ -26,14 +26,16 @@ def seqgen(n):
         return k
 
 
-def main(argv):
-    i=int(argv[0])
-    j=int(argv[1])
+def max_cycle(bounds):
+    i,j = bounds
     global mydict
     for n in range(i,j+1):
         seqgen(n)
-        
-    print(i,j,max(list(mydict.values())))
+    
+    print("{} {} {}".format(i, j, max(list(mydict.values()))))
+    mydict={}
 
 if __name__ == "__main__":
-    main(sys.argv[1:])
+    for line in sys.stdin:
+        bounds = tuple(sorted(map(int, line.split())))
+        max_cycle(bounds)
