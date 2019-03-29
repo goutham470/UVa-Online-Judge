@@ -24,27 +24,47 @@ def lightswitch(n):
     else:
         return "Yes"
     """
-
-
 import sys
+import math
+
+
+def primefactors(n):
+    primes=[2]
+    i=2
+    while i<=math.sqrt(n):
+        if min([i%x for x in primes ])==0:
+            i=nextoddnum(i+1)
+        else:
+            primes.append(i)
+            i=i+1
+    return primes
+
+
+def nextoddnum(n):
+    if n%2==0 :
+        n=nextoddnum(n+1)
+    return n
+
 
 def lightswitch(n):
-    pflst=[]
+    if n<=2: return "No"
+    pflst=primefactors(n)
     factors=[]
-    i=1
-    while i<=n:
-        if n%i==0:
-            pflst.append(i)
-            factors.append(int(n/i))
-            n, i=n/i, i
-            if i==1: i+=1
-        else:
-            n,i=n,i+1
+    for j in pflst:
+        i=j
+        while j<n: 
+            if n%i==0:
+                pflst.append(i)
+                factors.append(int(n/i))
+                n, i=n/i, i
+            else:
+                break
     #return factors, pflst    
     if len(factors)%2==0:
         return "No"
     else:
         return "Yes"
+
 
 if __name__ == "__main__":
     input=[]
@@ -52,3 +72,6 @@ if __name__ == "__main__":
         if int(line)==0 : break
         input.append(int(line))
     [print(lightswitch(int(n))) for n in input]
+
+#%time primefactors(1000)
+#%time lightswitch(3)
