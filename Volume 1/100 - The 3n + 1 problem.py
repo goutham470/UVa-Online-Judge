@@ -35,10 +35,12 @@ def max_cycle(bounds):
     return max(list(mydict.values()))
 
 if __name__ == "__main__":
+    input=[]
     for line in sys.stdin:
         ln=line.split()
         if len(ln)!=2:
             break
         bounds = tuple(sorted(map(int, ln)))
-        max_cycle(bounds)
-        print("{} {} {}".format(ln[0], ln[1], max(list(mydict.values()))))
+        input.append(bounds)
+    
+    [print("{} {} {}".format(x[0], x[1], max_cycle(x))) for x in input]
