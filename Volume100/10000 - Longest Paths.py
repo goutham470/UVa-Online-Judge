@@ -7,8 +7,10 @@ Created on Sun Mar 31 22:32:47 2019
 import sys
 #lst=[(1,2),(3,5),(3,1),(2,4),(4,5)]
 def LongestPath(s,lst):
-    x=[s]
+    x=s
     counter=0
+    
+     
     while len(x)!=0:
         last=x[0]
         x=[(i[1]) for i in lst if i[0] in x]
