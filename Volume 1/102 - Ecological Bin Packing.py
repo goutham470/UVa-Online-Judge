@@ -5,8 +5,8 @@ Created on Sat Apr  6 00:00:34 2019
 
 Done
 """   
-colorlst=['bgc','bcg','gcb','gbc','cgb','cbg']
-codelst=['012','021','120','102','210','201']
+colorlst=['BCG','BGC','CBG','GBC','CGB','GCB']
+codelst=['021','012','120','102','210','201']
 mydict={}
 for i in range(0,len(colorlst)):
     mydict[colorlst[i]]=codelst[i]
@@ -21,7 +21,7 @@ def minmovments(b,g,c):
         del y[int(v[1])]
         del z[int(v[2])]
         value=sum(x+y+z)
-        if value<=maxval:
+        if value<maxval:
             maxtup=(k,value)
             maxval=value
             #print("key:",k,"Value:",value)
